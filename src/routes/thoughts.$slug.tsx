@@ -38,7 +38,7 @@ function PostPage() {
     <div className="min-h-screen bg-background">
       <div className="mx-auto w-full max-w-[610px] px-6 py-20 sm:py-28">
         <main>
-          <p className="font-greater-theory text-[11px] tracking-label text-muted-foreground">
+          <p className="font-label text-[11px] tracking-label text-muted-foreground">
             <Link
               to="/"
               className="text-link underline decoration-link/40 underline-offset-4 transition-colors hover:decoration-link"
@@ -69,7 +69,7 @@ function PostPage() {
         </main>
 
         <aside className="mt-16 rounded-md border border-border bg-secondary/50 p-6">
-          <h2 className="font-greater-theory text-[11px] tracking-label text-muted-foreground">
+          <h2 className="font-label text-[11px] tracking-label text-muted-foreground">
             What next
           </h2>
           <p className="mt-3 text-sm text-foreground/90">
@@ -99,7 +99,7 @@ function PostPage() {
         </aside>
 
         <div className="mt-20">
-          <h2 className="font-greater-theory text-[11px] tracking-label text-muted-foreground">
+          <h2 className="font-label text-[11px] tracking-label text-muted-foreground">
             The full archive
           </h2>
           <Archive currentSlug={post.slug} />

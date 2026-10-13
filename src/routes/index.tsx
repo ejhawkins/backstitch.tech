@@ -68,7 +68,7 @@ function EntryBlock({ entry }: { entry: Entry }) {
   return (
     <article className="space-y-8">
       <header className="space-y-3">
-        <p className="font-greater-theory text-[11px] tracking-label text-muted-foreground">
+        <p className="font-label text-[11px] tracking-label text-muted-foreground">
           {entry.date}
         </p>
         <h2 className="font-display text-3xl tracking-normal text-foreground">
@@ -93,7 +93,7 @@ function EntryBlock({ entry }: { entry: Entry }) {
             className="bw-img w-full border border-border"
           />
           {entry.image.caption && (
-            <figcaption className="font-greater-theory text-[11px] tracking-label text-muted-foreground">
+            <figcaption className="font-label text-[11px] tracking-label text-muted-foreground">
               {entry.image.caption}
             </figcaption>
           )}
@@ -118,7 +118,7 @@ function Index() {
             the decisions, the parts that did not work, and what changed as a
             result. One column, no noise.
           </p>
-          <nav className="flex gap-6 font-greater-theory text-[11px] tracking-label">
+          <nav className="flex gap-6 font-label text-[11px] tracking-label">
             <a
               href="#entries"
               className="text-link underline decoration-link/40 underline-offset-4 transition-colors hover:decoration-link"
@@ -150,7 +150,7 @@ function Index() {
             This page used to carry its own hardcoded month/day list, which could
             drift away from the real post data without anyone noticing. */}
         <div id="archive" className="mt-32">
-          <h2 className="font-greater-theory text-[11px] tracking-label text-muted-foreground">
+          <h2 className="font-label text-[11px] tracking-label text-muted-foreground">
             Everything, newest first
           </h2>
           <Archive />

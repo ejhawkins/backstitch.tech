@@ -17,6 +17,25 @@
   font-display: swap;
 }
 
+/* Two further cuts of the same family. Registered as their own families
+   rather than weights of "Paris": they are stylistic alternates, not a weight
+   axis, so asking for bold would not select them. */
+@font-face {
+  font-family: "Paris Strip";
+  src: url("/fonts/Paris-Regular-Strip.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paris White";
+  src: url("/fonts/Paris-Regular-White.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "Greater Theory";
   src: url("/fonts/GreaterTheory.otf") format("opentype");
@@ -68,11 +87,12 @@
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
   --color-link: var(--link);
-  /* Reading text is a neutral grotesque, not the display face: Paris is drawn
-     for size and gives out in long prose. */
-  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Paris throughout — display, labels and reading text alike. It is a
+     high-contrast face, so prose set in it is given more size and more leading
+     than a grotesque would need, and never the display tracking. */
+  --font-sans: "Paris", "Times New Roman", serif;
   --font-serif: "Paris", "Times New Roman", serif;
-  --font-ui: "Greater Theory", "Paris", serif;
+  --font-ui: "Paris", "Times New Roman", serif;
   --font-hand: "September Spirit", cursive;
 }
 
@@ -138,9 +158,11 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    line-height: 1.75;
-    font-weight: 300;
+    /* Larger and looser than a grotesque would be set: Paris's thin strokes
+       need the size to survive, and its tall, narrow forms need the leading. */
+    font-size: 1.1875rem;
+    line-height: 1.85;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -167,7 +189,9 @@
   text-transform: uppercase;
 }
 
-@utility font-greater-theory {
+/* Small-caps label face. Named for the role, not the typeface, so pointing
+   --font-ui somewhere else does not leave the name lying. */
+@utility font-label {
   font-family: var(--font-ui);
   font-weight: 400;
 }
