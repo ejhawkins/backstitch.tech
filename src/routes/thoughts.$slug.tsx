@@ -36,7 +36,7 @@ function PostPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto w-full max-w-[610px] px-6 py-20 sm:py-28">
+      <div className="mx-auto w-full max-w-[52rem] px-6 py-20 sm:py-28">
         <main>
           <p className="font-label text-[11px] tracking-label text-muted-foreground">
             <Link
@@ -46,7 +46,7 @@ function PostPage() {
               Backstitch
             </Link>
           </p>
-          <h1 className="mt-6 font-display text-4xl leading-tight tracking-normal text-foreground">
+          <h1 className="mt-6 font-display text-6xl leading-tight tracking-normal text-foreground">
             {post.title}
           </h1>
           <p className="mt-3 text-sm text-muted-foreground">

@@ -158,12 +158,15 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    /* 24px, not the 17-19px a grotesque would take. Paris is high-contrast:
-       the thin strokes thin further as size drops, and under about 20px they
-       start breaking up on a low-DPI screen. Leading comes down as size goes
-       up — 1.85 was holding a small face together; at 24px it would drift. */
-    font-size: 1.5rem;
-    line-height: 1.7;
+    /* 28.8px. Paris is high-contrast and its thin strokes thin further as size
+       drops, so size is doing the legibility work. Leading comes down as size
+       goes up. The slight negative tracking knits the line together — Paris
+       sets loose at this size — but it stays near zero on purpose: the display
+       utility's -0.13em is drawn for a wordmark and closes word spaces on a
+       sentence, which is the failure this file warns about further down. */
+    font-size: 1.8rem;
+    line-height: 1.6;
+    letter-spacing: -0.03em;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;

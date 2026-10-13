@@ -71,7 +71,7 @@ function EntryBlock({ entry }: { entry: Entry }) {
         <p className="font-label text-[11px] tracking-label text-muted-foreground">
           {entry.date}
         </p>
-        <h2 className="font-display text-3xl tracking-normal text-foreground">
+        <h2 className="font-display text-5xl tracking-normal text-foreground">
           {entry.title}
         </h2>
       </header>
@@ -106,11 +106,11 @@ function EntryBlock({ entry }: { entry: Entry }) {
 function Index() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto w-full max-w-[46rem] px-6 py-24 sm:py-32">
+      <div className="mx-auto w-full max-w-[52rem] px-6 py-24 sm:py-32">
         <header className="space-y-6 pb-24">
           {/* One word, so the display face's -0.13em is an asset here rather
               than the legibility problem it becomes on a sentence. */}
-          <h1 className="font-display text-5xl leading-none text-foreground">
+          <h1 className="font-display text-8xl leading-none text-foreground">
             Backstitch
           </h1>
           <p className="max-w-[34ch] text-foreground/90">
