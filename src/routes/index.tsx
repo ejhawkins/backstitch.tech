@@ -37,16 +37,16 @@ const entries: Entry[] = [
     date: "October 2026",
     title: "Beginning at the end",
     body: [
-      "A backstitch is worked backwards. You push the needle forward, then come back through the last hole, and that doubling back is the whole reason the seam holds. It is the strongest stitch you can make by hand, and it is slower than every alternative.",
-      "That is roughly how this site works. The writing goes up while the work is still in progress — not afterwards, once it has been tidied into a case study and the decisions have been sanded off.",
+      "A backstitch is worked backwards. The needle goes forward, then back through the last hole, and that doubling back is why the seam holds.",
+      "It is the strongest stitch you can make by hand. It is also the slowest.",
     ],
   },
   {
     date: "September 2026",
     title: "The desk by the window",
     body: [
-      "I moved my desk back against the window last week and it changed the rhythm of the whole morning. There is something about working in natural light that no lamp has managed to replicate.",
-      "The notebook stays open now. That was the trick in the end — not discipline, not routine, just removing the small friction of a closed cover.",
+      "I moved the desk back against the window and it changed the whole morning.",
+      "The notebook stays open now. That was the trick — not discipline, just removing the friction of a closed cover.",
     ],
     image: {
       src: deskImg,
@@ -58,7 +58,7 @@ const entries: Entry[] = [
     date: "August 2026",
     title: "On slowing down",
     body: [
-      "This site has no analytics, no newsletter popup, no comments. It is a stack of pages, read the way you would flip through a book — top to bottom, at whatever pace suits you.",
+      "No analytics, no popup, no comments. A stack of pages, read top to bottom.",
       "If you want to say hello, email works fine. It always has.",
     ],
   },
@@ -106,17 +106,16 @@ function EntryBlock({ entry }: { entry: Entry }) {
 function Index() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto w-full max-w-[42rem] px-6 py-24 sm:py-32">
+      <div className="mx-auto w-full max-w-[46rem] px-6 py-24 sm:py-32">
         <header className="space-y-6 pb-24">
           {/* One word, so the display face's -0.13em is an asset here rather
               than the legibility problem it becomes on a sentence. */}
           <h1 className="font-display text-5xl leading-none text-foreground">
             Backstitch
           </h1>
-          <p className="max-w-[36rem] text-foreground/90">
-            Web work for fashion and beauty founders, documented as it happens —
-            the decisions, the parts that did not work, and what changed as a
-            result. One column, no noise.
+          <p className="max-w-[34ch] text-foreground/90">
+            Web work for fashion and beauty founders, documented while it is
+            still in progress.
           </p>
           <nav className="flex gap-6 font-label text-[11px] tracking-label">
             <a

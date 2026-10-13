@@ -158,10 +158,12 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    /* Larger and looser than a grotesque would be set: Paris's thin strokes
-       need the size to survive, and its tall, narrow forms need the leading. */
-    font-size: 1.1875rem;
-    line-height: 1.85;
+    /* 24px, not the 17-19px a grotesque would take. Paris is high-contrast:
+       the thin strokes thin further as size drops, and under about 20px they
+       start breaking up on a low-DPI screen. Leading comes down as size goes
+       up — 1.85 was holding a small face together; at 24px it would drift. */
+    font-size: 1.5rem;
+    line-height: 1.7;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -225,9 +227,9 @@
     grid-auto-flow: column;
     justify-content: space-between;
     align-items: baseline;
-    margin: 35px 0 14px;
+    margin: 42px 0 16px;
     font-family: var(--font-ui);
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-muted-foreground);
@@ -237,13 +239,18 @@
     letter-spacing: 0.18em;
   }
 
+  /* Deliberately below the 24px body: a row is one line that must hold title,
+     leader and date together, and at body size the titles all hit the ellipsis
+     and the list stops being scannable. Still larger than it was. */
   .archive-item {
     display: flex;
     align-items: baseline;
-    gap: 8px;
+    gap: 10px;
+    font-size: 1.25rem;
+    line-height: 1.5;
     text-decoration: none;
     color: inherit;
-    padding: 4px 0;
+    padding: 6px 0;
   }
 
   .archive-item p {
@@ -266,7 +273,7 @@
   .archive-item time {
     flex: 0 1 auto;
     font-family: var(--font-ui);
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     letter-spacing: 0.06em;
     color: var(--color-muted-foreground);
     white-space: nowrap;

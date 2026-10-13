@@ -14,11 +14,11 @@ export const slugify = (title: string) =>
     .replace(/(^-|-$)/g, "");
 
 const PARAGRAPHS = [
-  "There is a particular kind of clarity that only shows up when you give a single idea the whole page. No sidebar competing for attention, no related-posts carousel tugging at your sleeve — just the thought, laid out end to end, and room to finish it.",
-  "I keep coming back to the idea that constraints are a kindness. When the page can only do one thing, the writing has to carry everything, and that pressure turns out to be exactly what the writing needed.",
-  "None of this is a system. It is closer to a habit: show up, write the thing down, publish it before the doubt gets organized. The archive at the bottom of this page is the real artifact — the posts are just its annual rings.",
-  "The walk took longer than expected, as walks tend to do when the weather is good. Somewhere between the second and third hour the thinking loosened, and the sentence I had been chasing all week finally stopped running.",
-  "People ask how often I publish and the honest answer is: when something is ready. Frequency is a metric for machines. The only schedule that matters is the one between an idea arriving and me sitting down to meet it.",
+  "There is a clarity that only shows up when one idea gets the whole page. No sidebar competing for attention, no related-posts carousel — just the thought, with room to finish it.",
+  "Constraints are a kindness. When a page can only do one thing, the writing has to carry everything, and that pressure turns out to be what the writing needed.",
+  "None of this is a system. It is closer to a habit: write it down, publish it before the doubt gets organised.",
+  "The archive at the bottom is the real artifact. The posts are its annual rings.",
+  "People ask how often I publish. The honest answer is: when something is ready.",
 ];
 
 function makePost(title: string, date: string, category?: string): Post {
