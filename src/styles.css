@@ -118,32 +118,32 @@
      page, and the display utility uppercases anyway, so Segol goes exactly
      where it works. Labels are uppercase too, so they can take it. */
   --font-sans: "Paris", "Times New Roman", serif;
-  --font-serif: "Segol Calligraphic", "Paris", serif;
-  --font-ui: "Segol Calligraphic", "Paris", serif;
+  --font-serif: "Segol Dreamline", "Paris", serif;
+  --font-ui: "Segol Dreamline", "Paris", serif;
   --font-hand: "September Spirit", cursive;
 }
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.97 0.002 90);
-  --foreground: oklch(0.02 0 0);
-  --card: oklch(0.985 0.002 90);
-  --card-foreground: oklch(0.03 0 0);
-  --popover: oklch(0.985 0.002 90);
-  --popover-foreground: oklch(0.03 0 0);
-  --primary: oklch(0.02 0 0);
-  --primary-foreground: oklch(0.985 0.002 90);
-  --secondary: oklch(0.95 0.002 90);
+  --background: oklch(0.93 0.035 230);
+  --foreground: oklch(0.21 0.035 250);
+  --card: oklch(0.955 0.025 230);
+  --card-foreground: oklch(0.21 0.035 250);
+  --popover: oklch(0.955 0.025 230);
+  --popover-foreground: oklch(0.21 0.035 250);
+  --primary: oklch(0.21 0.035 250);
+  --primary-foreground: oklch(0.96 0.02 230);
+  --secondary: oklch(0.90 0.035 230);
   --secondary-foreground: oklch(0.03 0 0);
-  --muted: oklch(0.95 0.002 90);
-  --muted-foreground: oklch(0.30 0 0);
-  --accent: oklch(0.95 0.002 90);
-  --accent-foreground: oklch(0.03 0 0);
+  --muted: oklch(0.90 0.035 230);
+  --muted-foreground: oklch(0.42 0.035 248);
+  --accent: oklch(0.90 0.035 230);
+  --accent-foreground: oklch(0.21 0.035 250);
   --destructive: oklch(0.5 0.18 25);
   --destructive-foreground: oklch(0.985 0.002 90);
-  --border: oklch(0.13 0 0 / 0.40);
-  --input: oklch(0.13 0 0 / 0.12);
-  --ring: oklch(0.13 0 0 / 0.4);
+  --border: oklch(0.32 0.04 250 / 0.32);
+  --input: oklch(0.32 0.04 250 / 0.12);
+  --ring: oklch(0.32 0.04 250 / 0.4);
   /* Oxblood, the one colour in the system. */
   --link: oklch(0.38 0.09 25);
 }
@@ -218,6 +218,45 @@
    outlines, not substituted glyphs, so every calt/liga/dlig combination
    renders to exactly the same width. Space is the only lever. */
 @utility font-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  /* Gold, as a gradient clipped to the glyphs. The stops run dark-light-dark
+     rather than a straight ramp: metallic reads as metal because of the
+     banding across the middle, not because of the hue.
+
+     Every stop is measured against the baby blue ground, and that constraint
+     is what sets the palette. A conventional metallic runs up to a pale cream
+     highlight — #f3e08a measured 1.09:1 here, which is invisible. On a light
+     background the whole usable range is the dark half of the gold: #6b4a08
+     is 6.60:1 and #96700f is 3.73:1, and above that it washes out. So the
+     banding lives between those two. Gold on a dark ground could use the full
+     range; this cannot.
+
+     background-clip:text needs a transparent fill to show through, which
+     means `color` no longer paints these glyphs — anything relying on
+     text-foreground here will silently do nothing. The fallback colour is set
+     first so a browser without background-clip still renders solid gold
+     rather than invisible text. */
+  color: #8a6410;
+  background-image: linear-gradient(
+    100deg,
+    #6b4a08 0%,
+    #96700f 22%,
+    #5e4206 44%,
+    #96700f 66%,
+    #6b4a08 86%,
+    #8a6410 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Where the gradient must not apply — a gold-on-gold or gold-on-small label
+   loses too much contrast — reach for the face without the fill. */
+@utility font-display-plain {
   font-family: var(--font-serif);
   font-weight: 400;
   letter-spacing: 0.05em;
