@@ -392,3 +392,34 @@
   -webkit-mask-position: left center;
   mask-position: left center;
 }
+
+/* Partial italic, for display headings.
+
+   There is no italic cut of either face on disk — Paris and Segol ship Regular
+   only — so this is a synthetic slant. It is a skew rather than
+   `font-style: italic` on purpose: that hands the job to the browser's
+   synthetic oblique, which Chrome and Safari angle differently, and gives no
+   control over the amount. A skew is the same everywhere and tunable.
+
+   -9deg is as far as these faces take it. They are high-contrast, so skewing
+   thickens the thin strokes on one diagonal and thins them on the other; past
+   about 10deg the hairlines start to break up. A real italic redraws the
+   letterforms instead of shearing them, so if the italic cut of Paris is ever
+   bought, this should be replaced rather than stacked with it. */
+.display-italic {
+  display: inline-block;
+  /* Carries its own fill. The display treatment paints glyphs with a gradient
+     clipped to the text, which means -webkit-text-fill-color is transparent —
+     and that inherits. A child with the transparent fill but no background of
+     its own renders nothing: the word was laid out at full size and simply
+     invisible. Anything nested inside a display heading needs this. */
+  color: #000;
+  background-image: var(--mark-fill);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: skewX(-9deg);
+  /* Skew pivots on the box centre by default, which lifts the word off the
+     baseline it shares with the roman words beside it. */
+  transform-origin: 0 100%;
+}

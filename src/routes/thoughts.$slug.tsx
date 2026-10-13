@@ -2,6 +2,7 @@ import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 
 import { getPost, monthName, ordinalDay, yearOf } from "@/lib/posts";
 import { Archive } from "@/components/archive";
+import { PartItalic } from "@/components/part-italic";
 
 export const Route = createFileRoute("/thoughts/$slug")({
   loader: ({ params }) => {
@@ -47,7 +48,7 @@ function PostPage() {
             </Link>
           </p>
           <h1 className="mt-6 font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] text-foreground">
-            {post.title}
+            <PartItalic>{post.title}</PartItalic>
           </h1>
           <p className="mt-3 text-sm text-muted-foreground">
             <time dateTime={post.date}>

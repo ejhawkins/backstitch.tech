@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Archive } from "@/components/archive";
+import { PartItalic } from "@/components/part-italic";
 import deskImg from "@/assets/desk.jpg";
 
 export const Route = createFileRoute("/")({
@@ -69,7 +70,7 @@ function EntryBlock({ entry }: { entry: Entry }) {
           {entry.date}
         </p>
         <h2 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] text-foreground">
-          {entry.title}
+          <PartItalic>{entry.title}</PartItalic>
         </h2>
       </header>
 
