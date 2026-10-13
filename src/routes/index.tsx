@@ -37,15 +37,13 @@ const entries: Entry[] = [
     date: "October 2026",
     title: "Beginning at the end",
     body: [
-      "A backstitch is worked backwards. The needle goes forward, then back through the last hole, and that doubling back is why the seam holds.",
-      "It is the strongest stitch you can make by hand. It is also the slowest.",
+      "A backstitch is worked backwards. That doubling back is why the seam holds. It is the strongest stitch you can make by hand, and the slowest.",
     ],
   },
   {
     date: "September 2026",
     title: "The desk by the window",
     body: [
-      "I moved the desk back against the window and it changed the whole morning.",
       "The notebook stays open now. That was the trick — not discipline, just removing the friction of a closed cover.",
     ],
     image: {
@@ -59,7 +57,6 @@ const entries: Entry[] = [
     title: "On slowing down",
     body: [
       "No analytics, no popup, no comments. A stack of pages, read top to bottom.",
-      "If you want to say hello, email works fine. It always has.",
     ],
   },
 ];
@@ -71,7 +68,7 @@ function EntryBlock({ entry }: { entry: Entry }) {
         <p className="font-label text-[11px] tracking-label text-muted-foreground">
           {entry.date}
         </p>
-        <h2 className="font-display text-5xl text-foreground">
+        <h2 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] text-foreground">
           {entry.title}
         </h2>
       </header>
@@ -106,7 +103,7 @@ function EntryBlock({ entry }: { entry: Entry }) {
 function Index() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto w-full max-w-[52rem] px-6 py-24 sm:py-32">
+      <div className="mx-auto w-full max-w-[64rem] px-6 py-24 sm:py-32">
         <header className="space-y-6 pb-24">
           {/* The wordmark is artwork now, so the text lives on for screen
               readers and search while the mask does the drawing. */}
@@ -115,8 +112,8 @@ function Index() {
             <span aria-hidden="true" className="logo-mark" />
           </h1>
           <p className="max-w-[34ch] text-foreground/90">
-            Web work for fashion and beauty founders, documented while it is
-            still in progress.
+            Web work for fashion founders, documented while it is still in
+            progress.
           </p>
           <nav className="flex gap-6 font-label text-[11px] tracking-label">
             <a
@@ -161,8 +158,7 @@ function Index() {
           className="mt-32 space-y-4 border-t border-border pt-12 pb-8"
         >
           <p className="text-sm text-muted-foreground">
-            Backstitch is written and built by Erica Hawkins in Atlanta. No
-            tracking, no feeds, no ads.
+            Erica Hawkins, Atlanta. No tracking, no feeds, no ads.
           </p>
           <p className="text-sm text-muted-foreground">
             Say hello:{" "}

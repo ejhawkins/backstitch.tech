@@ -125,39 +125,41 @@
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.93 0.035 230);
-  --foreground: oklch(0.21 0.035 250);
-  --card: oklch(0.955 0.025 230);
-  --card-foreground: oklch(0.21 0.035 250);
-  --popover: oklch(0.955 0.025 230);
-  --popover-foreground: oklch(0.21 0.035 250);
-  --primary: oklch(0.21 0.035 250);
-  --primary-foreground: oklch(0.96 0.02 230);
-  --secondary: oklch(0.90 0.035 230);
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.09 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.09 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.09 0 0);
+  --primary: oklch(0.09 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.95 0 0);
   --secondary-foreground: oklch(0.03 0 0);
-  --muted: oklch(0.90 0.035 230);
-  --muted-foreground: oklch(0.42 0.035 248);
-  --accent: oklch(0.90 0.035 230);
-  --accent-foreground: oklch(0.21 0.035 250);
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.44 0 0);
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0.09 0 0);
   --destructive: oklch(0.5 0.18 25);
   --destructive-foreground: oklch(0.985 0.002 90);
-  --border: oklch(0.32 0.04 250 / 0.32);
-  --input: oklch(0.32 0.04 250 / 0.12);
-  --ring: oklch(0.32 0.04 250 / 0.4);
-  /* The gold, in one place: the wordmark artwork and the display type both
-     draw from it, so they cannot drift apart. Stops are constrained by the
-     background — see the note on font-display. */
-  --gold-leaf: linear-gradient(
+  --border: oklch(0.09 0 0 / 0.22);
+  --input: oklch(0.09 0 0 / 0.12);
+  --ring: oklch(0.09 0 0 / 0.4);
+  /* The display fill, in one place: the wordmark artwork and the display type
+     both draw from it, so they cannot drift apart. Black and white now, but
+     kept as a gradient rather than a flat colour — a faint graphite shift
+     across a very large glyph keeps it from reading as a dead area of ink,
+     and every stop is far past contrast on white. */
+  --mark-fill: linear-gradient(
     100deg,
-    #6b4a08 0%,
-    #96700f 22%,
-    #5e4206 44%,
-    #96700f 66%,
-    #6b4a08 86%,
-    #8a6410 100%
+    #000 0%,
+    #242424 30%,
+    #000 55%,
+    #1b1b1b 80%,
+    #000 100%
   );
-  /* Oxblood, the one colour in the system. */
-  --link: oklch(0.38 0.09 25);
+  /* No accent hue: the scheme is black and white, so a link is ink plus an
+     underline rather than a colour. */
+  --link: oklch(0.09 0 0);
 }
 
 .dark {
@@ -252,7 +254,7 @@
      first so a browser without background-clip still renders solid gold
      rather than invisible text. */
   color: #8a6410;
-  background-image: var(--gold-leaf);
+  background-image: var(--mark-fill);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -322,7 +324,10 @@
     display: flex;
     align-items: baseline;
     gap: 10px;
-    font-size: 1.25rem;
+    /* Fluid, because a row is one line carrying title, leader and date on a
+       shared baseline. Fixed at 20px it suited the desktop column and clipped
+       8 of 56 titles on a 390px phone. */
+    font-size: clamp(1.02rem, 0.9vw + 0.78rem, 1.25rem);
     line-height: 1.5;
     text-decoration: none;
     color: inherit;
@@ -375,9 +380,9 @@
    aspect-ratio holds the box before the mask loads, so nothing reflows. */
 .logo-mark {
   display: block;
-  width: min(100%, 34rem);
+  width: min(100%, 58rem);
   aspect-ratio: 1629 / 331;
-  background-image: var(--gold-leaf);
+  background-image: var(--mark-fill);
   -webkit-mask-image: url("/backstitch-logo.png");
   mask-image: url("/backstitch-logo.png");
   -webkit-mask-size: contain;
