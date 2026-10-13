@@ -1,0 +1,259 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---- typefaces -----------------------------------------------------------
+   Self-hosted, carried over from WearableLogbook. Paris is the display face,
+   Greater Theory the UI face for labels and small caps, September Spirit the
+   handwritten marker used sparingly. */
+
+@font-face {
+  font-family: "Paris";
+  src: url("/fonts/Paris-Regular-Exit.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Greater Theory";
+  src: url("/fonts/GreaterTheory.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "September Spirit";
+  src: url("/fonts/SeptemberSpirit.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+ * Design system: monochrome editorial, carried over from WearableLogbook.
+ * Near-black on near-white, one oxblood accent, dark mode by `.dark` class so
+ * a manual toggle can go both ways rather than following the OS only.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-link: var(--link);
+  /* Reading text is a neutral grotesque, not the display face: Paris is drawn
+     for size and gives out in long prose. */
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Paris", "Times New Roman", serif;
+  --font-ui: "Greater Theory", "Paris", serif;
+  --font-hand: "September Spirit", cursive;
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.97 0.002 90);
+  --foreground: oklch(0.02 0 0);
+  --card: oklch(0.985 0.002 90);
+  --card-foreground: oklch(0.03 0 0);
+  --popover: oklch(0.985 0.002 90);
+  --popover-foreground: oklch(0.03 0 0);
+  --primary: oklch(0.02 0 0);
+  --primary-foreground: oklch(0.985 0.002 90);
+  --secondary: oklch(0.95 0.002 90);
+  --secondary-foreground: oklch(0.03 0 0);
+  --muted: oklch(0.95 0.002 90);
+  --muted-foreground: oklch(0.30 0 0);
+  --accent: oklch(0.95 0.002 90);
+  --accent-foreground: oklch(0.03 0 0);
+  --destructive: oklch(0.5 0.18 25);
+  --destructive-foreground: oklch(0.985 0.002 90);
+  --border: oklch(0.13 0 0 / 0.40);
+  --input: oklch(0.13 0 0 / 0.12);
+  --ring: oklch(0.13 0 0 / 0.4);
+  /* Oxblood, the one colour in the system. */
+  --link: oklch(0.38 0.09 25);
+}
+
+.dark {
+  --background: oklch(0.10 0 0);
+  --foreground: oklch(0.97 0.002 90);
+  --card: oklch(0.14 0 0);
+  --card-foreground: oklch(0.96 0 0);
+  --popover: oklch(0.14 0 0);
+  --popover-foreground: oklch(0.96 0 0);
+  --primary: oklch(0.97 0.002 90);
+  --primary-foreground: oklch(0.10 0 0);
+  --secondary: oklch(0.20 0 0);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.20 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.20 0 0);
+  --accent-foreground: oklch(0.96 0 0);
+  --destructive: oklch(0.60 0.18 25);
+  --destructive-foreground: oklch(0.10 0 0);
+  --border: oklch(0.97 0.002 90 / 0.40);
+  --input: oklch(0.97 0.002 90 / 0.12);
+  --ring: oklch(0.97 0.002 90 / 0.4);
+  /* Lifted off the oxblood: the dark original fails contrast on near-black. */
+  --link: oklch(0.72 0.07 25);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+}
+
+/* ---- type utilities ------------------------------------------------------ */
+
+/* The display face.
+
+   WARNING, learned the hard way: the -0.13em is drawn for the masthead, where
+   the letters are 100px+ and need pulling together. On a full sentence at
+   30-50px it closes the word spaces and "VECTORS AND CLEAN DRAWING" renders as
+   one run-on word. Use this for short display lines; add `tracking-normal` the
+   moment it has to carry a sentence. */
+@utility font-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.13em;
+  text-transform: uppercase;
+}
+
+@utility font-greater-theory {
+  font-family: var(--font-ui);
+  font-weight: 400;
+}
+
+@utility font-hand {
+  font-family: var(--font-hand);
+  font-weight: 400;
+}
+
+@utility tracking-label {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+@utility bw-img {
+  filter: grayscale(1) contrast(1.05);
+}
+
+/*
+ * Archive list: flat month headings + dotted-leader rows.
+ * The <hr> stretches to fill the gap so every date aligns on the right edge.
+ */
+@layer components {
+  .archive {
+    display: block;
+  }
+
+  .archive-month {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 35px 0 14px;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted-foreground);
+  }
+
+  .archive-month .year {
+    letter-spacing: 0.18em;
+  }
+
+  .archive-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+    padding: 4px 0;
+  }
+
+  .archive-item p {
+    flex: 0 1 auto;
+    white-space: nowrap;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .archive-item hr {
+    flex: 1 1 auto;
+    min-width: 30px;
+    height: 1px;
+    margin: 0;
+    border: 0;
+    border-top: 1px dotted var(--color-muted-foreground);
+  }
+
+  .archive-item time {
+    flex: 0 1 auto;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--color-muted-foreground);
+    white-space: nowrap;
+  }
+
+  .archive-item:hover p {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .archive-item[aria-current="page"] {
+    opacity: 0.45;
+  }
+}
