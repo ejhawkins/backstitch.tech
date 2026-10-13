@@ -44,6 +44,27 @@
   font-display: swap;
 }
 
+/* Segol, two calligraphic cuts. Shipped as WOFF2 subset to Latin: the source
+   OTFs are 3.7MB each — 26,743 glyphs for 344 mapped characters, almost all of
+   it swashes and alternates reachable through OpenType features. Latin-only
+   with default features is 314KB; keeping every feature would be 1.0MB a face.
+   Nothing uses them yet, and an unused @font-face downloads nothing. */
+@font-face {
+  font-family: "Segol Calligraphic";
+  src: url("/fonts/Segol-Calligraphic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Segol Dreamline";
+  src: url("/fonts/Segol-Dreamline.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "September Spirit";
   src: url("/fonts/SeptemberSpirit.ttf") format("truetype");
