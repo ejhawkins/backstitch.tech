@@ -71,7 +71,7 @@ function EntryBlock({ entry }: { entry: Entry }) {
         <p className="font-label text-[11px] tracking-label text-muted-foreground">
           {entry.date}
         </p>
-        <h2 className="font-display text-5xl tracking-normal text-foreground">
+        <h2 className="font-display text-5xl text-foreground">
           {entry.title}
         </h2>
       </header>

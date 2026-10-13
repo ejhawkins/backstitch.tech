@@ -46,7 +46,7 @@ function PostPage() {
               Backstitch
             </Link>
           </p>
-          <h1 className="mt-6 font-display text-6xl leading-tight tracking-normal text-foreground">
+          <h1 className="mt-6 font-display text-6xl leading-tight text-foreground">
             {post.title}
           </h1>
           <p className="mt-3 text-sm text-muted-foreground">

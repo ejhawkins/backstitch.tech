@@ -111,9 +111,15 @@
   /* Paris throughout — display, labels and reading text alike. It is a
      high-contrast face, so prose set in it is given more size and more leading
      than a grotesque would need, and never the display tracking. */
+  /* Segol sets the display, Paris the reading text, and the split is not
+     taste: Segol's lowercase "e" is drawn as a closed bowl with no crossbar,
+     so at any size it reads as an "o" — "the needle goes" becomes "tho noodlo
+     goos". Its capitals have no such problem and are the best thing on the
+     page, and the display utility uppercases anyway, so Segol goes exactly
+     where it works. Labels are uppercase too, so they can take it. */
   --font-sans: "Paris", "Times New Roman", serif;
-  --font-serif: "Paris", "Times New Roman", serif;
-  --font-ui: "Paris", "Times New Roman", serif;
+  --font-serif: "Segol Calligraphic", "Paris", serif;
+  --font-ui: "Segol Calligraphic", "Paris", serif;
   --font-hand: "September Spirit", cursive;
 }
 
@@ -201,17 +207,20 @@
 
 /* ---- type utilities ------------------------------------------------------ */
 
-/* The display face.
+/* The display face, now Segol — and the tracking is positive, which is the
+   opposite of what Paris wanted here.
 
-   WARNING, learned the hard way: the -0.13em is drawn for the masthead, where
-   the letters are 100px+ and need pulling together. On a full sentence at
-   30-50px it closes the word spaces and "VECTORS AND CLEAN DRAWING" renders as
-   one run-on word. Use this for short display lines; add `tracking-normal` the
-   moment it has to carry a sentence. */
+   Paris took -0.13em: drawn for a masthead, its letters need pulling together.
+   Segol's capitals carry swashes drawn past their own advance width, so
+   negative tracking makes a G's tail crash into the next letter. Measured on
+   "BEGINNING AT THE END": at 0em the swash collides, at 0.02em it clears, and
+   0.05em reads best. Feature settings cannot help — the flourishes are in the
+   outlines, not substituted glyphs, so every calt/liga/dlig combination
+   renders to exactly the same width. Space is the only lever. */
 @utility font-display {
   font-family: var(--font-serif);
   font-weight: 400;
-  letter-spacing: -0.13em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
