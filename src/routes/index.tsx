@@ -108,10 +108,11 @@ function Index() {
     <div className="min-h-screen bg-background">
       <div className="mx-auto w-full max-w-[52rem] px-6 py-24 sm:py-32">
         <header className="space-y-6 pb-24">
-          {/* One word, so the display face's -0.13em is an asset here rather
-              than the legibility problem it becomes on a sentence. */}
-          <h1 className="font-display text-8xl leading-none text-foreground">
-            Backstitch
+          {/* The wordmark is artwork now, so the text lives on for screen
+              readers and search while the mask does the drawing. */}
+          <h1>
+            <span className="sr-only">Backstitch</span>
+            <span aria-hidden="true" className="logo-mark" />
           </h1>
           <p className="max-w-[34ch] text-foreground/90">
             Web work for fashion and beauty founders, documented while it is
