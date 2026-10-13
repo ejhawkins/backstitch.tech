@@ -1,14 +1,15 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 
-import { getPost, monthName, ordinalDay, yearOf } from "@/lib/posts";
+import { posts, monthName, ordinalDay, yearOf } from "@/lib/posts";
 import { Archive } from "@/components/archive";
 import { PartItalic } from "@/components/part-italic";
 
 export const Route = createFileRoute("/thoughts/$slug")({
-  loader: ({ params }) => {
-    const post = getPost(params.slug);
+  loader: async ({ params }) => {
+    const archivePosts = await posts();
+    const post = archivePosts.find((entry) => entry.slug === params.slug);
     if (!post) throw notFound();
-    return post;
+    return { ...post, archivePosts };
   },
   head: ({ loaderData }) => ({
     meta: [
@@ -70,12 +71,10 @@ function PostPage() {
         </main>
 
         <aside className="mt-16 rounded-md border border-border bg-secondary/50 p-6">
-          <h2 className="font-label text-[11px] tracking-label text-muted-foreground">
-            What next
-          </h2>
+          <h2 className="font-label text-[11px] tracking-label text-muted-foreground">What next</h2>
           <p className="mt-3 text-sm text-foreground/90">
-            New posts go out by email and RSS whenever they're ready — no
-            schedule, no noise. Or just write to me; email works fine.
+            New posts go out by email and RSS whenever they're ready — no schedule, no noise. Or
+            just write to me; email works fine.
           </p>
           <div className="mt-4 flex flex-wrap gap-5 text-sm">
             <a
@@ -103,7 +102,7 @@ function PostPage() {
           <h2 className="font-label text-[11px] tracking-label text-muted-foreground">
             The full archive
           </h2>
-          <Archive currentSlug={post.slug} />
+          <Archive posts={post.archivePosts} currentSlug={post.slug} />
         </div>
 
         <footer className="mt-20 flex flex-wrap gap-6 border-t border-border pt-8 pb-6 text-sm text-muted-foreground">

@@ -1,18 +1,13 @@
 import { Fragment } from "react";
 
-import {
-  posts,
-  ordinalDay,
-  monthName,
-  yearOf,
-} from "@/lib/posts";
+import { type Post, ordinalDay, monthName, yearOf } from "@/lib/posts";
 
 /**
  * The full archive: a flat sequence of siblings — month heading, then its
  * posts, then the next month — newest first. No pagination, no filtering.
  * Identical on every post page.
  */
-export function Archive({ currentSlug }: { currentSlug?: string }) {
+export function Archive({ posts, currentSlug }: { posts: Post[]; currentSlug?: string }) {
   let lastMonthKey: string | null = null;
   let lastYear: string | null = null;
 

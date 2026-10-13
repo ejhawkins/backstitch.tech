@@ -213,6 +213,11 @@
     text-rendering: optimizeLegibility;
   }
 
+  p {
+    font-size: 40px;
+    line-height: normal;
+  }
+
   ::selection {
     background-color: var(--color-foreground);
     color: var(--color-background);
@@ -327,7 +332,7 @@
     /* Fluid, because a row is one line carrying title, leader and date on a
        shared baseline. Fixed at 20px it suited the desktop column and clipped
        8 of 56 titles on a 390px phone. */
-    font-size: clamp(1.02rem, 0.9vw + 0.78rem, 1.25rem);
+    font-size: clamp(0.75rem, 3.2vw, 1.25rem);
     line-height: 1.5;
     text-decoration: none;
     color: inherit;
@@ -335,6 +340,8 @@
   }
 
   .archive-item p {
+    font-size: inherit;
+    line-height: inherit;
     flex: 0 1 auto;
     white-space: nowrap;
     margin: 0;
